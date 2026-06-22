@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>开云 · 简明指引</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #f2f4f7;
+      color: #1d2a3a;
+      line-height: 1.6;
+      padding: 1.5rem;
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* hero / 主视觉 */
+    .hero {
+      background: #ffffff;
+      border-radius: 28px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 20, 40, 0.06);
+      padding: 2.8rem 2.4rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      border: 1px solid #e9eef3;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: #0e1f2f;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: #405669;
+      max-width: 600px;
+      margin: 0 auto 1.1rem;
+    }
+
+    .hero .badge {
+      display: inline-block;
+      background: #e7edf5;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      color: #1f3b54;
+      border: 1px solid #d4dee9;
+      margin-top: 0.2rem;
+    }
+
+    /* 卡片网格区（用途+人群） */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 640px) {
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.8rem 1.6rem 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.03);
+      border: 1px solid #e3eaf1;
+      transition: box-shadow 0.15s;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 22px rgba(0, 20, 40, 0.06);
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #dce6f0;
+      color: #13293d;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .card li {
+      padding: 0.4rem 0 0.4rem 1.6rem;
+      position: relative;
+      font-size: 0.96rem;
+      color: #2d4057;
+    }
+
+    .card li::before {
+      content: "·";
+      position: absolute;
+      left: 0.3rem;
+      color: #4870a0;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      font-size: 0.96rem;
+      color: #344b63;
+      margin-bottom: 0.5rem;
+    }
+
+    /* 指引提示区块 */
+    .guide-block {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 2rem 2.2rem;
+      margin-bottom: 2rem;
+      border: 1px solid #e3eaf1;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+    }
+
+    .guide-block h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #0b2235;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .guide-block h3 span {
+      background: #dce5f0;
+      border-radius: 30px;
+      padding: 0.1rem 0.7rem;
+      font-size: 0.8rem;
+      color: #1a3853;
+    }
+
+    .guide-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem 2rem;
+      align-items: baseline;
+    }
+
+    .guide-content p {
+      flex: 2 1 260px;
+      font-size: 0.95rem;
+      color: #2c4059;
+    }
+
+    .guide-note {
+      flex: 1 1 200px;
+      background: #f5f8fd;
+      border-radius: 40px;
+      padding: 0.7rem 1.2rem;
+      font-size: 0.9rem;
+      border: 1px solid #d4e0ed;
+      color: #1c364f;
+      display: inline-block;
+    }
+
+    /* FAQ 摘要 */
+    .faq-mini {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 1.6rem 2rem 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid #e3eaf1;
+    }
+
+    .faq-mini h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #0b1f30;
+      margin-bottom: 1rem;
+    }
+
+    .faq-item {
+      padding: 0.7rem 0;
+      border-top: 1px solid #edf2f8;
+    }
+
+    .faq-item:first-of-type {
+      border-top: none;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      color: #1a3652;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-a {
+      color: #3b5570;
+      font-size: 0.92rem;
+    }
+
+    .faq-a a {
+      color: #2e5a8a;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dotted #b0c9e0;
+    }
+
+    .faq-a a:hover {
+      border-bottom: 2px solid #1d4a77;
+    }
+
+    .faq-link-more {
+      margin-top: 1rem;
+      text-align: right;
+      font-size: 0.9rem;
+      color: #506e8b;
+    }
+
+    /* 自然链接段落（句子内嵌） */
+    .link-sentence {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 1.6rem 2.2rem;
+      margin-bottom: 2rem;
+      border: 1px solid #e3eaf1;
+    }
+
+    .link-sentence p {
+      font-size: 0.97rem;
+      color: #2c4059;
+      margin-bottom: 0.6rem;
+    }
+
+    .link-sentence a {
+      color: #1f4a78;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1.5px solid #b7cee6;
+    }
+
+    .link-sentence a:hover {
+      border-bottom-color: #1a3f64;
+      background: #e8f0fa;
+    }
+
+    /* 页脚 */
+    .footer-note {
+      text-align: center;
+      font-size: 0.82rem;
+      color: #6f87a0;
+      padding: 1rem 0 0.5rem;
+      border-top: 1px solid #dce4ee;
+      margin-top: 0.5rem;
+    }
+
+    .footer-note span {
+      opacity: 0.7;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #d8e2ed;
+      margin: 0.5rem 0 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- hero 主视觉 -->
+    <header class="hero">
+      <h1>开云 · 访问指引</h1>
+      <p>一份简明、实用的信息页，帮你快速了解<strong>开云</strong>的使用方向、适合场景以及访问时的小提醒。</p>
+      <div class="badge">📌 当前更新 · 通用说明版</div>
+    </header>
+
+    <!-- 信息卡片区：用途卡片 + 适合人群 -->
+    <div class="card-grid">
+      <section class="card">
+        <h2>主要用途</h2>
+        <ul>
+          <li>获取在线服务与内容入口</li>
+          <li>浏览日常资讯及功能页面</li>
+          <li>通过统一界面完成特定操作</li>
+          <li>适配移动端与桌面端浏览</li>
+        </ul>
+        <p style="margin-top:0.8rem; font-size:0.9rem; color:#3a5775;">以上场景均基于常规使用路径，请以实际页面为准。</p>
+      </section>
+      <section class="card">
+        <h2>适合人群</h2>
+        <ul>
+          <li>习惯通过网页获取信息的用户</li>
+          <li>需要快速找到功能入口的访客</li>
+          <li>对界面简洁度有一定要求的使用者</li>
+          <li>希望直接访问、减少中间步骤的人</li>
+        </ul>
+        <p style="margin-top:0.8rem; font-size:0.9rem; color:#3a5775;">无论新老用户，均可按需使用。</p>
+      </section>
+    </div>
+
+    <!-- 访问提醒/简明指南 -->
+    <div class="guide-block">
+      <h3>📘 访问提醒 <span>简明指南</span></h3>
+      <div class="guide-content">
+        <p>使用前建议确认网络环境稳定，部分功能可能需要更新浏览器版本。页面加载后，可依照导航或卡片内容逐步探索。若遇到显示异常，可尝试刷新或检查地址是否正确。</p>
+        <div class="guide-note">🔒 注意保护个人账户信息，通过正规渠道操作。</div>
+      </div>
+    </div>
+
+    <!-- FAQ 摘要（自然嵌入链接） -->
+    <div class="faq-mini">
+      <h3>❓ 常见疑问摘要</h3>
+      <div class="faq-item">
+        <div class="faq-q">如何开始使用开云？</div>
+        <div class="faq-a">直接通过浏览器访问 <a href="https://m-kaaiyun.com">开云</a> 即可进入主页面，无需额外安装。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">是否支持手机访问？</div>
+        <div class="faq-a">页面已做响应式适配，手机、平板均可正常浏览，部分交互会随屏幕尺寸调整。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">链接失效或页面打不开怎么办？</div>
+        <div class="faq-a">可尝试更换浏览器或检查网络，也可稍后重试。正式入口仅以 <a href="https://m-kaaiyun.com">开云</a> 为准。</div>
+      </div>
+      <div class="faq-link-more">—— 更多内容可直接访问了解。</div>
+    </div>
+
+    <!-- 自然链接段落（句子中嵌入“开云”） -->
+    <div class="link-sentence">
+      <p>如果你正在寻找一个清晰、直接的访问起点，不妨试试 <a href="https://m-kaaiyun.com">开云</a>，它提供了相对简洁的页面结构和常用功能入口。</p>
+      <p>在日常使用中，将 <a href="https://m-kaaiyun.com">开云</a> 添加到浏览器书签，可以方便后续快速返回。</p>
+    </div>
+
+    <hr>
+
+    <footer class="footer-note">
+      <span>本页面为信息介绍页 · 内容仅供一般参考</span>
+    </footer>
+
+  </div>
+</body>
+</html>
